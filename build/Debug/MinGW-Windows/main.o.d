@@ -1,3 +1,5 @@
-build/Debug/MinGW-Windows/main.o: main.cpp Credentials.h
+build/Debug/MinGW-Windows/main.o: main.cpp Interface.h Credentials.h
+
+Interface.h:
 
 Credentials.h:

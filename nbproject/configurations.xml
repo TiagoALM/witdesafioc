@@ -4,7 +4,9 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
+      <itemPath>Constants.h</itemPath>
       <itemPath>Credentials.h</itemPath>
+      <itemPath>Interface.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
@@ -14,6 +16,7 @@
                    displayName="Source Files"
                    projectFiles="true">
       <itemPath>Credentials.cpp</itemPath>
+      <itemPath>Interface.cpp</itemPath>
       <itemPath>main.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
@@ -38,9 +41,15 @@
       </toolsSet>
       <compileType>
       </compileType>
+      <item path="Constants.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="Credentials.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Credentials.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Interface.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Interface.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -65,9 +74,15 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
+      <item path="Constants.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="Credentials.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Credentials.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Interface.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Interface.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>

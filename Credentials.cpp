@@ -1,8 +1,10 @@
 
 #include "Credentials.h"
+#include "Constants.h"
 #include <iostream>
 #include <fstream>
 #include <cstring>
+#include <vector>
 
 
 Credentials::Credentials() {
@@ -17,6 +19,10 @@ Credentials::~Credentials() {
     string Credentials::getUrlUsername() const
     {
         return urlUsername;
+    }
+    string Credentials::getFileName() const
+    {
+        return fileName;
     }
     string Credentials::getUrl() const
     {
@@ -39,64 +45,120 @@ Credentials::~Credentials() {
     {
         this->urlPassword = urlPassword;
     }
-    
-    void Credentials::addSiteCredential(string site, string user, 
-                                        string password, string nomeFich)
+    void Credentials::setFileName(string fileName) 
     {
-        this->setUrl(site);
-        this->setUrlPassword(password);
-        this->setUrlUsername(user);        
+        this->fileName = fileName;
+    }
+    
+    void Credentials::addSiteCredential(Credentials  &credential)
+                                  
+    {    
         ofstream ofs;
 
         //open in append mode
-        ofs.open( nomeFich + ".txt", ios::app); 
+        ofs.open( credential.getFileName() + TXT, ios::app);          
+
         if (!ofs)
         {
-            cout << "Erro a abrir o ficheiro" << endl;
+            cout << ERROR3 << endl;
         }
         else
         {
-        ofs << "\n";
-        ofs << this->getUrl();
-        ofs << " ";
-        ofs << this->getUrlUsername();
-        ofs << " ";
-        ofs << this->getUrlPassword();
-        cout << "credencias adicionadas!" << endl;        
+        ofs << ENTER;
+        ofs << credential.getUrl();
+        ofs << SPACE;
+        ofs << credential.getUrlUsername();
+        ofs << SPACE;
+        ofs << credential.getUrlPassword();
+        cout << ADDED << endl;        
         ofs.close();   
         }
        
     }
-    void Credentials::getSiteCredential (string site, string username,
-                                         string nomeFich) const 
+    string Credentials::getSiteCredential (Credentials  &credential) const 
     {
         ifstream ifs;
-        ifs.open(nomeFich + ".txt", ios::in);
+        ifs.open(credential.getFileName() + TXT, ios::in);
 
         if (!ifs)
         {
-            cout << "Erro a abrir o ficheiro" << endl;
+            cout << ERROR3 << endl;
+            return NULL;
         }
         else
         {
             string urlTemp;
             string userTemp;
-            string passTemp;
+            string passTemp = MINUSONE;
             bool control = false;
             while ( ifs >>urlTemp >> userTemp >> passTemp)
             {
-                if(urlTemp == site && userTemp == username)
-                {
-                    cout << passTemp << endl;
+                if(urlTemp == credential.getUrl() && 
+                   userTemp == credential.getUrlUsername())
+                {                    
                     control = true;
-                    break;    
+                    return passTemp;   
                 }
             }
             if(!control)
             {
-              cout << "Não foi encontrado o par site/username indicado" << endl;          
+              return passTemp;          
             }
         }
     }
+    
+//    string Credentials::updateSiteCredential(string site, string username,
+//                              string novaPassaword, string nomeFich)
+//    {
+//        vector<Credentials> credentials;
+//         ifstream ifs;
+//        ifs.open(nomeFich + ".txt", ios::in);
+//
+//        if (!ifs)
+//        {
+//            cout << "Erro a abrir o ficheiro" << endl;
+//            return NULL;
+//        }
+//        else
+//        {
+//            string urlTemp;
+//            string userTemp;
+//            string passTemp = "-1";
+//            
+//            bool control = false;
+//            while ( ifs >>urlTemp >> userTemp >> passTemp)
+//            {
+//                if(urlTemp == site && userTemp == username)
+//                {                    
+//                    control = true;
+//                    Credentials cred;
+//                    cred.setUrl(urlTemp),
+//                    cred.setUrlPassword(novaPassaword);
+//                    cred.setUrlUsername(userTemp);
+//                    credentials.push_back(cred);
+//                }else{
+//                    Credentials cred;
+//                    cred.setUrl(urlTemp),
+//                    cred.setUrlPassword(passTemp);
+//                    cred.setUrlUsername(userTemp);
+//                    credentials.push_back(cred);
+//                }
+//                }
+//        
+//            if(!control)
+//            {
+//              return "-1";          
+//            }
+//            else
+//            {
+//                for(auto i = credentials.begin(); i != credentials.end(); i++)
+//                {
+//                   
+//                }
+//            }
+//        
+//        }
+//    }
+    
     
 
