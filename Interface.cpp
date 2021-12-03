@@ -17,6 +17,13 @@ Interface::Interface(const Interface& orig)
 Interface::~Interface() 
 {
 }
+void Interface::clearScrean()
+{
+    int n;
+    for (n = 0; n < 10; n++)
+    cout << "\n\n\n\n\n\n\n\n\n\n" << endl; 
+}
+
 void Interface::lanchInterface()
 {
     Credentials credentials; 
@@ -31,7 +38,7 @@ void Interface::lanchInterface()
     if(op == ONE)
     {   
         string temp;
-        system("cls");
+        clearScrean();
         cout << URL <<endl;
         cin >> temp;
         credential.setUrl(temp);
@@ -50,7 +57,7 @@ void Interface::lanchInterface()
     else if(op == TWO)
     {
         string temp;
-        system("cls");
+        clearScrean();
         cout << URL <<endl;
         cin >> temp;
         credential.setUrl(temp);

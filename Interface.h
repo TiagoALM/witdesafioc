@@ -13,6 +13,7 @@ public:
     Interface();
     Interface(const Interface& orig);
     
+    void clearScrean();
     void lanchInterface();
     virtual ~Interface();
 
